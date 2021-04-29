@@ -10,11 +10,11 @@ import org.openqa.selenium.support.ui.Select;
 public class SignaturesPage {
     
     private WebDriver driver;
-    private Select select;
-
-    public SignaturesPage(Select select) {
-        this.select = select;
-    }
+//    private Select select;
+//
+//    public SignaturesPage(Select select) {
+//        this.select = select;
+//    }
    
 
     public SignaturesPage(WebDriver driver) {
@@ -55,27 +55,24 @@ public class SignaturesPage {
         driver.findElement(confirmApproveButton).click();
     }
     
-    public  void portalSelectViaDropDown(int index) {
-      driver.findElement(portalDropDownLocator);
-      select.selectByIndex(index); 
+    public  void portalSelectViaDropDown(String portalName) {
+        Select selectPortal = new Select(driver.findElement(portalDropDownLocator));
+        selectPortal.selectByVisibleText(portalName); 
     }
     
     
-    public  void signatureSelectViaDropDown(int index) {
-      driver.findElement(signatureDropDownLocator);
-      select.selectByIndex(index); 
+    public  void signatureSelectViaDropDown(String signatureName) {
+        Select selectSignature = new Select(driver.findElement(signatureDropDownLocator));
+        selectSignature.selectByVisibleText(signatureName); 
     }
-     
-    public  void categorySelectViaDropDown(int index) {
-      driver.findElement(categoryDropDownLocator);
-      select.selectByIndex(index); 
-    }
+    
       
-    public  void categoryApproveViaDropDown(int index) {
-      driver.findElement(categoryConfirmLocator);
-      select.selectByIndex(index);
+    public void categoryApproveViaDropDown(String categoryName) {
+        Select selectCategory = new Select(driver.findElement(categoryConfirmLocator)); 
+        selectCategory.selectByVisibleText(categoryName);
      
     }
+ 
     
     public String getCategoryApproveText () {
         return driver.findElement(categoryConfirmLocator).getText();

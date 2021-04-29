@@ -199,16 +199,16 @@ public class SignaturesTests {
     
      @Test
      
-    public void testApproveThirdNewsInCategoryShowBiz() {
+    public void testApproveThirdNewsInCategoryB92() {
         
         signaturesPage.clickOnThirdAppoveButton();
         
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
         
-        signaturesPage.categoryApproveViaDropDown(1);
+        signaturesPage.categoryApproveViaDropDown("B92");
         
         signaturesPage.clickOnConfirmApproveButton();
-        
+     
         //String elementFound = signaturesPage.getAllertSuccessMessage();
         //assertTrue("elementFound");
         
@@ -224,7 +224,7 @@ public class SignaturesTests {
         assertTrue("Alert message is not correct", expectedAllertMessage.equals(actualAllertMessage));
         
   
-        //News processor signature "/vesti/naslovna/tehnologije/aktuelno/236" has been approved as uncategorized
+        
     
     }
 }

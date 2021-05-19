@@ -199,32 +199,41 @@ public class SignaturesTests {
     
      @Test
      
-    public void testApproveThirdNewsInCategoryB92() {
+    public void testApproveThirdNewsInCategoryB92() {//ne radi, vidi donji test
+        
+        String category = "ShowBiz";
+        String signature = signaturesPage.getThirdRowNewsSignatureText();
         
         signaturesPage.clickOnThirdAppoveButton();
-        
-        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-        
-        signaturesPage.categoryApproveViaDropDown("B92");
-        
+        signaturesPage.categoryApproveViaDropDown(category);
         signaturesPage.clickOnConfirmApproveButton();
      
-        //String elementFound = signaturesPage.getAllertSuccessMessage();
-        //assertTrue("elementFound");
+    
+       // String message1 = signaturesPage.getThirdRowNewsSignatureText();
+        //String message2 = signaturesPage.getCategoryApproveText();
         
-        
-        String message1 = signaturesPage.getThirdRowNewsSignatureText();
-        String message2 = signaturesPage.getCategoryApproveText();
-        
-        String expectedAllertMessage = "News processor signature \"" + message1 + "\" has been approved with category \"" + message2 +"\"";
+        String expectedAllertMessage = "News processor signature \"" + signature + "\" has been approved with category \"" + category +"\"";
         String actualAllertMessage = signaturesPage.getAllertSuccessMessage();
       
         
        
         assertTrue("Alert message is not correct", expectedAllertMessage.equals(actualAllertMessage));
-        
-  
-        
     
     }
+    
+    
+     @Test
+    public void testApproveThirdNewsInCategoryPolitika() {
+        String category = "Politika";
+        String signature = signaturesPage.getThirdRowNewsSignatureText();
+        signaturesPage.clickOnThirdAppoveButton();
+        signaturesPage.categoryApproveViaDropDown1(category);
+        signaturesPage.clickOnConfirmApproveButton();
+        
+        String expectedAllertMessage = "News processor signature \"" + signature + "\" has been approved with category \"" + category +"\"";
+        String actualAllertMessage = signaturesPage.getAllertSuccessMessage();
+        assertTrue("Alert message is not correct", expectedAllertMessage.equals(actualAllertMessage));
+    }
+    
+    
 }

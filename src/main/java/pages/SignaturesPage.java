@@ -4,12 +4,15 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class SignaturesPage {
     
     private WebDriver driver;
+    private WebDriverWait wait;
 //    private Select select;
 //
 //    public SignaturesPage(Select select) {
@@ -71,6 +74,12 @@ public class SignaturesPage {
         Select selectCategory = new Select(driver.findElement(categoryConfirmLocator)); 
         selectCategory.selectByVisibleText(categoryName);
      
+    }
+    
+    public void categoryApproveViaDropDown1(String categoryName) {
+        WebElement categoryDropdown = wait.until(ExpectedConditions.elementToBeClickable(categoryConfirmLocator));
+        Select selectCategory = new Select(categoryDropdown); 
+        selectCategory.selectByVisibleText(categoryName);
     }
  
     
